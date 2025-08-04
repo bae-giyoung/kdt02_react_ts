@@ -1,36 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-//import './ts/ts-test.ts'
-import './ts/ts-fnc.ts'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './components/Home'
+import Nav from './components/Nav'
+import Login from './components/Login'
+import Subway from './components/Subway'
+import SubwayChart from './components/SubwayChart'
+import TodoList from './components/TodoList'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className='bg-amber-500'>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <div className="w-full xl:w-8/10 mx-auto h-screen
+                    flex flex-col justify-start items-start">
+        <Nav />
+        <main className='w-full flex-grow overflow-y-auto py-10 px-4
+                        flex flex-col justify-start items-center box-border'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/subway' element={<SubwayChart />} />
+            <Route path='/todo' element={<TodoList />} />
+          </Routes>
+        </main>
+        <footer className='w-full min-h-20 flex justify-center items-center
+                          bg-black text-white'>
+          K-Digital 2025 2기
+        </footer>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </BrowserRouter>
   )
 }
 

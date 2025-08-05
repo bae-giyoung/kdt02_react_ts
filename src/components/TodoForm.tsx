@@ -1,6 +1,14 @@
+import type { MouseEvent } from "react"
 import TailButton from "./TailButton"
 
-export default function TodoForm({selRef, ipRef, addHandle, resetHandle}) {
+interface TodoFromProps {
+  selRef: React.RefObject<HTMLSelectElement | null>, // RefObject<HTMLInputElement | null>
+  ipRef: React.RefObject<HTMLInputElement | null>,
+  addHandle: (e:MouseEvent) => void,
+  resetHandle: (e:MouseEvent) => void,
+}
+
+export default function TodoForm({selRef, ipRef, addHandle, resetHandle} : TodoFromProps) {
   return (
     <form className="w-full grid grid-cols-5 gap-4 bg-gray-200 py-3 px-4">
             <select name="completed" ref={selRef}

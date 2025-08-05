@@ -101,5 +101,5 @@ Object.keys(p40).map((key)=> { // name, age
     console.log(`${key} : ${p40[key]}`); // ❌
 });
 
-(Object.keys(p40) as (keyof PersonInterface)[]) // keyof
+(Object.keys(p40) as (keyof PersonInterface)[]) // keyof 객체의 keys를 유니온 타입으로!
 .map(key => console.log(key, p40[key]));

@@ -1,3 +1,4 @@
+import type { completedT, Todo } from "../types/Todo";
 import TailButton from "./TailButton";
 
 //let tag: ReactNode; => 이 타입 기억해두기!!!!!
@@ -5,21 +6,19 @@ import TailButton from "./TailButton";
 //예시 onClick={() => onUpdate? onUpdate(tid, completed) : ''} -> 매우 이상해보임!
 
 interface TodoItemProps {
-  tid: number,
-  text: string,
-  completed: string,
-  onUpdate? : (id: number, t: string) => void,
-  onDelete? : (id: number) => void,
+  item: Todo,
+  onUpdate : (id: string, t: completedT) => void,
+  onDelete : (id: string) => void,
 }
 
-export default function TodoItem({tid, text, completed, onUpdate, onDelete} : TodoItemProps) {
+export default function TodoItem({item, onUpdate, onDelete} : TodoItemProps) {
   return (
     <li className="w-full flex py-2 items-center justify-between">
-        <p className="w-9/10 text-left cursor-pointer" onClick={() => onUpdate? onUpdate(tid, completed) : ''}>
-            <span>{completed == 'O' ? '✅' : '❌' }</span>
-            <span className="px-4">{text}</span>
+        <p className="w-9/10 text-left cursor-pointer" onClick={() => onUpdate(item["id"], item["completed"])}>
+            <span>{item["completed"] == 'O' ? '✅' : '❌' }</span>
+            <span className="px-4">{item["text"]}</span>
         </p>
-        <TailButton color="blue" caption="삭제" onHandle={() => onDelete? onDelete(tid) : ''} />
+        <TailButton color="blue" caption="삭제" onHandle={() => onDelete(item["id"])} />
     </li>
   )
 }

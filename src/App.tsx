@@ -6,6 +6,10 @@ import Login from './components/Login'
 import Subway from './components/Subway'
 import SubwayChart from './components/SubwayChart'
 import TodoList from './components/TodoList'
+import MyClock from './02/MyClock'
+import Lotto from './05/Lotto'
+import FoodMain from './06/FoodMain'
+import FoodMain2 from './06/FoodMain2'
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/subway' element={<SubwayChart />} />
             <Route path='/todo' element={<TodoList />} />
+            <Route path='/clock' element={<MyClock />} />
+            <Route path='/lotto' element={<Lotto />} />
+            <Route path='/food' element={<FoodMain />} />
+            <Route path='/food2' element={<FoodMain2 />} />
           </Routes>
         </main>
         <footer className='w-full min-h-20 flex justify-center items-center
